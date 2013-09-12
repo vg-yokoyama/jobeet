@@ -1,0 +1,5 @@
+indexSuccess:
+  stylesheets: [jobs]
+
+showSuccess:
+  stylesheets: [job]
