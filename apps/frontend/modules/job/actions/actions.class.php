@@ -19,6 +19,8 @@ class jobActions extends sfActions
   {
     $this->job = JobeetJobPeer::retrieveByPk($request->getParameter('id'));
     $this->forward404Unless($this->job);
+    //$this->job = $this->getRoute()->getObject();
+    //$this->forward404Unless($this->job);
   }
 
   public function executeCreate()
