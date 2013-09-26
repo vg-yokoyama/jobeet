@@ -1,23 +1,22 @@
 <?php use_stylesheet('jobs') ?>
 
 <div id="jobs">
+<?php foreach ($catetories as $catetory): ?>
+<div class="category_<?php echo Jobeet::slugify($catetory->getName()) ?>">
+<div class="category">
+<div class="feed">
+<a href="">FEED</a>
+</div>
+<h1><?php echo $catetory ?>
+</div>
+
 <table class="jobs">
-<?php foreach ($jobeet_jobList as $i => $job): ?>
-<tr class="<?php echo fmod($i, 2) ? 'even' : 'odd' ?>">
-<td class="location"><?php echo $job->getLocation() ?></td>
+<?php foreach ($catetory->getActiveJobs(sfConfig::get('app_max_jobs_on_homepage')) as $i => $job): ?>
+<tr class="<?php echo fmod($i, 2) ? 'even' : 'oda' ?>">
+<td class="location">
+<?php echo $job->getLocation() ?>
+</td>
 <td class="position">
-<!-- この設定だとうごかない -->
-<!--
-<a href="<?php echo url_for(
-array('@job_show_user', $job)
-) ?>">
--->
-<!-- この設定だとうごかない -->
-<!--
-<a href="<?php echo url_for(
-array('sf_route' => '@job_show_user', 'sf_subject' => $job)
-) ?>">
--->
 <a href="<?php echo url_for(
 'job/show?id='.$job->getId().
 '&company=' . $job->getCompany().
@@ -27,8 +26,12 @@ array('sf_route' => '@job_show_user', 'sf_subject' => $job)
 <?php echo $job->getPosition() ?>
 </a>
 </td>
-<td class="company"><?php echo $job->getCompany() ?></td>
+<td class="company">
+<?php echo $job->getCompany() ?>
+</td>
 </tr>
 <?php endforeach ?>
 </table>
+</div>
+<?php endforeach ?>
 </div>

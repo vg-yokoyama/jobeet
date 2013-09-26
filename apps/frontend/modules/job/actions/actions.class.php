@@ -12,7 +12,8 @@ class jobActions extends sfActions
 {
   public function executeIndex()
   {
-    $this->jobeet_jobList = JobeetJobPeer::doSelect(new Criteria());
+    //$this->jobeet_jobList = JobeetJobPeer::getActiveJobs();
+    $this->catetories = JobeetCategoryPeer::getWithJobs();
   }
 
   public function executeShow($request)
