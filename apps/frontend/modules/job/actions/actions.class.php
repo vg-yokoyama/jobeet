@@ -13,7 +13,7 @@ class jobActions extends sfActions
   public function executeIndex()
   {
     //$this->jobeet_jobList = JobeetJobPeer::getActiveJobs();
-    $this->catetories = JobeetCategoryPeer::getWithJobs();
+    $this->categories = JobeetCategoryPeer::getWithJobs();
   }
 
   public function executeShow($request)
